@@ -67,3 +67,20 @@ def test_install_command_line_tools_failure(monkeypatch):
     assert result["success"] is False
     assert result["stdout"] == ""
     assert "Command failed" in result["stderr"]
+
+def test_check_software_updates_success(monkeypatch):
+    # Simulate a successful software update check.
+    monkeypatch.setattr(subprocess, "run", fake_run_success)
+    result = Xcode.check_software_updates()
+    # Note: The fake success function returns the same output as for xcode-select.
+    assert result["success"] is True
+    assert result["stdout"] == "xcode-select version 2395"
+    assert result["stderr"] == ""
+
+def test_check_software_updates_failure(monkeypatch):
+    # Simulate a failure in checking software updates.
+    monkeypatch.setattr(subprocess, "run", fake_run_failure)
+    result = Xcode.check_software_updates()
+    assert result["success"] is False
+    assert result["stdout"] == ""
+    assert "Command failed" in result["stderr"]
