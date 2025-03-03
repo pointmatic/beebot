@@ -1,0 +1,27 @@
+# Copyright (c) 2025 Pointmatic, (https://www.pointmatic.com)
+#
+# This source code is licensed under the MIT License found in the
+# LICENSE file in the root directory of this source tree.
+#
+#============================================================================================================================================================================================
+#
+# This is the project definition file
+
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "DooBee"
+version = "0.1.0"
+description = "A system for installing, configuring, and running AI models and applications locally."
+authors = [
+    { name = "Michael Wayne Smith", email = "michael.smith@pointmatic.com" }
+]
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.6"
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["macos"]
