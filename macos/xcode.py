@@ -69,9 +69,9 @@ class Xcode:
             }
 
     @staticmethod
-    def check_software_updates():
+    def list_software_updates():
         """
-        Checks for available macOS software updates using the 'softwareupdate -l' command.
+        Lists available MacOS software updates using the 'softwareupdate -l' command.
 
         Returns:
             A dict with keys:
@@ -84,6 +84,7 @@ class Xcode:
                 - The output may vary based on the system's current state. 
                 - The command may take some time to complete.
                 - The error message will contain the "No new software available." message if no updates are available.
+                - There appears to be a way to install updates according to the help list (softwareupdate --help).
                 - UNKNOWN: where the output for available updates will go (possibly stderr).
         """
         try:
@@ -105,7 +106,45 @@ class Xcode:
                 'stderr': e.stderr.strip() if e.stderr else str(e)
             }
 
-# unit test
+    @staticmethod
+    def list_software_updates_history():
+        """
+        List historical MacOS software updates using the 'softwareupdate --history' command.
+
+        Returns:
+            A dict with keys:
+                - success: True if the command succeeds, False otherwise.
+                - stdout: Standard output (stripped).
+                - stderr: Standard error (stripped).
+
+            Note: 
+                - The 'softwareupdate -l' command requires root privileges to run successfully.
+                - The output may vary based on the system's current state. 
+                - The command may take some time to complete.
+                - The error message will contain the "No new software available." message if no updates are available.
+                - There appears to be a way to install updates according to the help list (softwareupdate --help).
+                - UNKNOWN: where the output for available updates will go (possibly stderr).
+        """
+        try:
+            result = subprocess.run(
+                ['softwareupdate', '--history'],
+                capture_output=True,
+                text=True,
+                check=True
+            )
+            return {
+                'success': True,
+                'stdout': result.stdout.strip(),
+                'stderr': result.stderr.strip()
+            }
+        except subprocess.CalledProcessError as e:
+            return {
+                'success': False,
+                'stdout': e.stdout.strip() if e.stdout else "",
+                'stderr': e.stderr.strip() if e.stderr else str(e)
+            }
+
+# unit tests
 if __name__ == '__main__':
     # Check for, and if necessary, install the Xcode Command Line Tools version.
     version_info = Xcode.get_command_line_tools_version()
@@ -119,10 +158,18 @@ if __name__ == '__main__':
         else:
             print("Failed to initiate installation. Error details:", install_info['stderr'])
 
-    # Check for macOS software updates.
-    updates_info = Xcode.check_software_updates()
+    # List available macOS software updates.
+    updates_info = Xcode.list_software_updates()
     if updates_info['success']:
         print("Software updates available:")
         print(updates_info['stdout'])
     else:
-        print("Failed to check for software updates. Error details:", updates_info['stderr'])
+        print("Failed to list software updates. Error details:", updates_info['stderr'])
+
+    # List historical macOS software updates.
+    history_info = Xcode.list_software_updates_history()
+    if history_info['success']:
+        print("Software updates history:")
+        print(history_info['stdout'])
+    else:
+        print("Failed to list software updates history. Error details:", history_info['stderr'])
