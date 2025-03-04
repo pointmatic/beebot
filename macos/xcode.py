@@ -7,7 +7,7 @@ LICENSE file in the root directory of this source tree.
 
 ============================================================================================================================================================================================
 
-This is the xcode module that gets the Xcode command line tools version and installs that.
+This is the macos.xcode module that gets the Xcode command line tools version and installs that.
 """
 
 import subprocess
