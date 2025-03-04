@@ -18,7 +18,7 @@ functionality. The package contains the following modules:
 from .xcode import Xcode
 
 # Define what is exported when 'from my_package import *' is used
-__all__ = ['Xcode', 'platform']
+__all__ = ['Xcode', 'MacPlatform']
 
 # Optional: define package-level variables or initialization code
 __version__ = '0.1.1'

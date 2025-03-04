@@ -7,6 +7,11 @@ LICENSE file in the root directory of this source tree.
 
 ============================================================================================================================================================================================
 
-This is the macos.platform module that gets the MacOS version. 
+This is the utils.unit_test module with helper funtions for direct unit tests with code.
 """
+
+def print_unit_test_header(test_name):
+    print("\n=====================================================================================================")
+    print("Unit Test: ", test_name)
+    print("=====================================================================================================")
 

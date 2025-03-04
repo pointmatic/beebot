@@ -12,6 +12,13 @@ This is the macos.xcode module that gets the Xcode command line tools version an
 
 import subprocess
 
+# Add the project root directory to the Python path
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+import utils.unit_test as utils
+
 class Xcode:
     @staticmethod
     def get_command_line_tools_version():
@@ -145,19 +152,14 @@ class Xcode:
             }
 
 # unit tests
-def print_unit_test_header(name):
-    print("\n=====================================================================================================")
-    print("Unit Test: ", name)
-    print("=====================================================================================================")
-
 if __name__ == '__main__':
     # Check for, and if necessary, install the Xcode Command Line Tools version.
-    print_unit_test_header("get_command_line_tools_version")
+    utils.print_unit_test_header("get_command_line_tools_version")
     version_info = Xcode.get_command_line_tools_version()
     if version_info['success']:
         print("Xcode Command Line Tools version:", version_info['stdout'])
     else:
-        print_unit_test_header("install_command_line_tools")
+        utils.print_unit_test_header("install_command_line_tools")
         print("Xcode Command Line Tools not installed. Attempting installation...")
         install_info = Xcode.install_command_line_tools()
         if install_info['success']:
@@ -166,7 +168,7 @@ if __name__ == '__main__':
             print("Failed to initiate installation. Error details:", install_info['stderr'])
 
     # List available macOS software updates.
-    print_unit_test_header("list_software_updates")
+    utils.print_unit_test_header("list_software_updates")
     updates_info = Xcode.list_software_updates()
     if updates_info['success']:
         print(updates_info['stdout'])
@@ -175,7 +177,7 @@ if __name__ == '__main__':
         print("Failed to list software updates. Error details:", updates_info['stderr'])
 
     # List historical macOS software updates.
-    print_unit_test_header("list_software_updates_history")
+    utils.print_unit_test_header("list_software_updates_history")
     history_info = Xcode.list_software_updates_history()
     if history_info['success']:
         print("Software updates history:")

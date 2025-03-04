@@ -143,3 +143,8 @@ def test_list_software_updates_history_failure(monkeypatch):
     assert result["success"] is False
     assert result["stdout"] == ""
     assert "Command failed" in result["stderr"]
+
+def test_get_macos_version():
+    from macos.mac_platform import MacPlatform
+    version = MacPlatform.get_macos_version()
+    assert version
