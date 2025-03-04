@@ -7,7 +7,7 @@ LICENSE file in the root directory of this source tree.
 
 ============================================================================================================================================================================================
 
-This is the pytest test module that determines if the macos package is working correctly. 
+Determines if the macos package is working correctly. 
 
 Helper Classes:
     - FakeCompletedProcessOutput: encapsulates mock output.
@@ -22,23 +22,11 @@ Inline Functions:
 
 import subprocess
 import pytest
+
+import pytest_utils
+
 from macos.xcode import Xcode
-
-# Helper class to simulate subprocess.CompletedProcess
-class FakeCompletedProcessOutput:
-    def __init__(self, stdout, stderr):
-        self.stdout = stdout
-        self.stderr = stderr
-
-# Helper functions
-def fake_run_failure(args, capture_output, text, check):
-    # Simulate a failed execution.
-    raise subprocess.CalledProcessError(
-        returncode=1,
-        cmd=args,
-        output="",
-        stderr="Command failed"
-    )
+from macos.mac_platform import MacPlatform
 
 
 # Test functions
@@ -145,6 +133,5 @@ def test_list_software_updates_history_failure(monkeypatch):
     assert "Command failed" in result["stderr"]
 
 def test_get_macos_version():
-    from macos.mac_platform import MacPlatform
     version = MacPlatform.get_macos_version()
     assert version

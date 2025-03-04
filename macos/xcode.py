@@ -12,13 +12,6 @@ This is the macos.xcode module that gets the Xcode command line tools version an
 
 import subprocess
 
-# Add the project root directory to the Python path
-import sys
-import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-import utils.unit_test as utils
-
 class Xcode:
     @staticmethod
     def get_command_line_tools_version():
@@ -153,6 +146,13 @@ class Xcode:
 
 # unit tests
 if __name__ == '__main__':
+    # Add the project root directory to the Python path
+    import sys
+    import os
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+    import utils.unit_test as utils
+
     # Check for, and if necessary, install the Xcode Command Line Tools version.
     utils.print_unit_test_header("get_command_line_tools_version")
     version_info = Xcode.get_command_line_tools_version()

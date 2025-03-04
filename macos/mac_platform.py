@@ -12,13 +12,6 @@ This is the macos.platform module that gets the MacOS version.
 
 import platform
 
-# Add the project root directory to the Python path
-import sys
-import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-import utils.unit_test as utils
-
 class MacPlatform:
     @staticmethod
     def get_macos_version():
@@ -30,6 +23,13 @@ class MacPlatform:
         return version
 
 if __name__ == '__main__':
+    # Add the project root directory to the Python path
+    import sys
+    import os
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+    import utils.unit_test as utils
+
     utils.print_unit_test_header("get_macos_version")
     version = MacPlatform.get_macos_version()
     if version:
