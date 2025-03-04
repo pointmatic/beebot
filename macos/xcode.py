@@ -145,12 +145,19 @@ class Xcode:
             }
 
 # unit tests
+def print_unit_test_header(name):
+    print("\n=====================================================================================================")
+    print("Unit Test: ", name)
+    print("=====================================================================================================")
+
 if __name__ == '__main__':
     # Check for, and if necessary, install the Xcode Command Line Tools version.
+    print_unit_test_header("get_command_line_tools_version")
     version_info = Xcode.get_command_line_tools_version()
     if version_info['success']:
         print("Xcode Command Line Tools version:", version_info['stdout'])
     else:
+        print_unit_test_header("install_command_line_tools")
         print("Xcode Command Line Tools not installed. Attempting installation...")
         install_info = Xcode.install_command_line_tools()
         if install_info['success']:
@@ -159,14 +166,16 @@ if __name__ == '__main__':
             print("Failed to initiate installation. Error details:", install_info['stderr'])
 
     # List available macOS software updates.
+    print_unit_test_header("list_software_updates")
     updates_info = Xcode.list_software_updates()
     if updates_info['success']:
-        print("Software updates available:")
         print(updates_info['stdout'])
+        print(updates_info['stderr'])
     else:
         print("Failed to list software updates. Error details:", updates_info['stderr'])
 
     # List historical macOS software updates.
+    print_unit_test_header("list_software_updates_history")
     history_info = Xcode.list_software_updates_history()
     if history_info['success']:
         print("Software updates history:")
