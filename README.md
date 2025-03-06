@@ -5,6 +5,16 @@ AI Desktop Configurator
 This application helps users install and configure utilities, applications, and dependencies that are commonly used for AI, data science, and software development. 
 
 
+# HOW TO USE
+
+Currently, only CLI commands are implemented as stubs and only MacOS is supported. 
+
+Using the terminal...
+1. Checkout the repo 
+2. Run this command to compile: `pyinstaller --onefile beezeebot_cli.py`
+3. Run this command to see the help file: beezeebot_cli
+
+
 # BACKGROUND
 
 Personally, there have been so many times that I have gone through an initial software development setup process on my Mac, Windows PC, or Linux computer, and each time there are a series of little gotchas, undocumented workarounds, and idiosyncracies or incompatibilities that make it annoying. After wasting an hour here and a few hours there with interruptions to do other things, I always get to the same question: "Why someone hasn't solved this problem?" 
