@@ -12,7 +12,7 @@ Currently, only CLI commands are implemented as stubs and only MacOS is supporte
 Using the terminal...
 1. Checkout the repo 
 2. Run this command to compile: `pyinstaller --onefile beezeebot_cli.py`
-3. Run this command to see the help file: beezeebot_cli
+3. Run this command to see the help file: `beezeebot_cli`
 
 
 # BACKGROUND
