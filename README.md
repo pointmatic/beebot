@@ -14,6 +14,8 @@ Using the terminal...
 2. Run this command to compile: `pyinstaller --onefile beezeebot_cli.py`
 3. Run this command to see the help file: `beezeebot_cli`
 
+If you need to clean up all the build artifacts for a fresh build...
+./utils/cleanup.sh
 
 ## Background
 
