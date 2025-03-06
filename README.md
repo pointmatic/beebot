@@ -5,7 +5,7 @@ AI Desktop Configurator
 This application helps users install and configure utilities, applications, and dependencies that are commonly used for AI, data science, and software development. 
 
 
-# How to Use
+## How to Use
 
 Currently, only CLI commands are implemented as stubs and only MacOS is supported. 
 
@@ -15,7 +15,7 @@ Using the terminal...
 3. Run this command to see the help file: `beezeebot_cli`
 
 
-# Background
+## Background
 
 Personally, there have been so many times that I have gone through an initial software development setup process on my Mac, Windows PC, or Linux computer, and each time there are a series of little gotchas, undocumented workarounds, and idiosyncracies or incompatibilities that make it annoying. After wasting an hour here and a few hours there with interruptions to do other things, I always get to the same question: "Why someone hasn't solved this problem?" 
 
@@ -24,7 +24,7 @@ Of course, after everything is working, I go on my merry way, gradually forgetti
 Most recently, I've noticed that people get excited about AI and want to try out using AI models locally and also try other open source software, only to be slowed down and discouraged by the installation and configuration process. While an AI or a YouTube video might be able to walk through the installation of each tool, inevitably, there is some combination of tools, or some hidden detail that breaks down, turning it into a technical troubleshooting problem for a software engineer or IT technician. 
 
 
-# Supported Platforms
+## Supported Platforms
 
 - MacOS (v. 15+)
 - Windows (TBD)
@@ -33,9 +33,9 @@ Most recently, I've noticed that people get excited about AI and want to try out
 While I anticipate expanding support for Windows and Linux, my first priority is for MacOS. Once I have end-to-end completion, I'll turn attention to the other platforms. 
 
 
-# Supported Utilities and Applications
+## Supported Utilities and Applications
 
-## Utilities
+### Utilities
 - OS detection (prototype)
 - Xcode command-line tools (prototype)
 - MacOS Sofware updates (prototype)
@@ -44,7 +44,7 @@ While I anticipate expanding support for Windows and Linux, my first priority is
     - ~~Python~~ TBD
     - ~~Ruby~~ TBD
 - ~~direnv~~ TBD
-## Applications
+### Applications
 - ~~VS Code~~ TBD
   - ~~VS Code Extensions~~ TBD
 - ~~Ollama~~ TBD
