@@ -10,8 +10,8 @@ LICENSE file in the root directory of this source tree.
 This is the macos package that contains modules for working with macOS-specific
 functionality. The package contains the following modules:
 
-    - xcode: Contains Xcode that handles checking for Xcode command line tools and installing them.
-    - platform: Contains Platform that handles checking for the macOS version.
+    - macos.xcode: Contains Xcode that handles checking for Xcode command line tools and installing them.
+    - macos.platform: Contains Platform that handles checking for the macOS version.
 """
 
 # Import specific classes or functions from submodules
