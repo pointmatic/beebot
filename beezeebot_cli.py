@@ -7,7 +7,7 @@ LICENSE file in the root directory of this source tree.
 
 ============================================================================================================================================================================================
 
-This is the doobee_cli module that handles command-line argument parsing and performs an appropriate action. 
+This is the beezeebot_cli module that handles command-line argument parsing and performs an appropriate action. 
 """
 
 import argparse
@@ -55,7 +55,7 @@ def parse_command_line_args():
       -l, --list TYPE            : Lists either 'installed' utilities / applications, or the 'options' of which are available.
     """
     parser = argparse.ArgumentParser(
-        description="DooBee is an AI utility and application configurator. If you have ever tried to install an Ollama model and run a chat interface for the first time on your Mac, you know that it's a multi-step process with configuration and some technical decisions. Rather than all that hassle, DooBee will handle all the dependencies for you so you don't have to type in 15 command-line instructions just to get something installed and ready to use. Whether you're an experienced developer or you have no idea how to use the command line, DooBee is here to help you get set up with AI apps, data science tools, and it will even configure a software development environment for Python, Ruby, or C++ using VS Code."
+        description="BeeZeeBot is an AI utility and application configurator. If you have ever tried to install an Ollama model and run a chat interface for the first time on your Mac, you know that it's a multi-step process with configuration and some technical decisions. Rather than all that hassle, BeeZeeBot will handle all the dependencies for you so you don't have to type in 15 command-line instructions just to get something installed and ready to use. Whether you're an experienced developer or you have no idea how to use the command line, BeeZeeBot is here to help you get set up with AI apps, data science tools, and it will even configure a software development environment for Python, Ruby, or C++ using VS Code."
     )
     
     # Create a mutually exclusive group so that only one of -i or -v is provided.
