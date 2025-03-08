@@ -12,9 +12,9 @@ This is the beezeebot_cli module that handles command-line argument parsing and 
 
 import argparse
 
-from macos.xcode import Xcode
-from mac_or_linux_os.brew import Brew
-from mac_or_linux_os.asdf import Asdf
+from components.xcode import Xcode
+from components.brew import Brew
+from components.asdf import Asdf
 
 # Homebrew
 def get_brew_version_msg():

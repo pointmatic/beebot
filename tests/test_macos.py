@@ -25,8 +25,8 @@ import pytest
 
 import pytest_utils
 
-from macos.xcode import Xcode
-from macos.mac_platform import MacPlatform
+from components.xcode import Xcode
+from components.mac_platform import MacPlatform
 
 
 # Test functions

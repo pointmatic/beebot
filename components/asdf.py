@@ -10,7 +10,7 @@ LICENSE file in the root directory of this source tree.
 This is the components.brew module that handles Homebrew actions. 
 """
 
-from components.subproc import Subproc
+from components.utils.subproc import Subproc
 
 class Asdf:
     # asdf plugins
