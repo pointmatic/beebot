@@ -7,12 +7,15 @@ LICENSE file in the root directory of this source tree.
 
 ============================================================================================================================================================================================
 
-This is the maclinux.brew module that handles Homebrew actions. 
+This is the components.brew module that handles Homebrew actions. 
 """
 
-import subprocess
+from components.subproc import Subproc
 
 class Brew:
+    # Homebrew plugins
+    PLUGINS = ["asdf", "direnv"]
+
     @staticmethod
     def get_homebrew_version():
         """
@@ -21,24 +24,9 @@ class Brew:
             - stdout: Standard output from the command.
             - stderr: Standard error output from the command.
         """
-        try:
-            result = subprocess.run(
-                ['brew', '--version'],
-                capture_output=True,
-                text=True,
-                check=True
-            )
-            return {
-                'success': True,
-                'stdout': result.stdout.strip(),
-                'stderr': result.stderr.strip()
-            }
-        except subprocess.CalledProcessError as e:
-            return {
-                'success': False,
-                'stdout': e.stdout.strip() if e.stdout else "",
-                'stderr': e.stderr.strip() if e.stderr else str(e)
-            }
+        command = ["brew", "--version"]
+        result = Subproc.run_command(command)
+        return result
 
     @staticmethod
     def install_homebrew():
@@ -53,25 +41,33 @@ class Brew:
                 - stderr: The standard error output of the command (stripped).
         """
         command = ["/bin/bash", "-c", "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"]
-        try:
-            result = subprocess.run(
-                command,
-                capture_output=True,
-                text=True,
-                check=True
-            )
-            return {
-                "success": True,
-                "stdout": result.stdout.strip(),
-                "stderr": result.stderr.strip()
-            }
-        except subprocess.CalledProcessError as e:
+        result = Subproc.run_command(command)
+        return result
+        
+    @staticmethod
+    def install_plugin(plugin_name):
+        """
+        Runs the Homebrew plugin installation script using the command:
+            brew install <plugin_name>
+        
+        Returns:
+            A dictionary with the following keys:
+                - success: True if the command executed successfully, False otherwise.
+                - stdout: The standard output of the command (stripped).
+                - stderr: The standard error output of the command (stripped).
+        """
+
+        if plugin_name not in Brew.PLUGINS:
             return {
                 "success": False,
-                "stdout": e.stdout.strip() if e.stdout else "",
-                "stderr": e.stderr.strip() if e.stderr else str(e)
+                "stdout": "",
+                "stderr": f"Plugin '{plugin_name}' not found in the list of available plugins."
             }
-
+        
+        command = ["brew", "install", plugin_name]
+        result = Subproc.run_command(command)
+        return result
+    
 if __name__ == '__main__':
     # Add the project root directory to the Python path
     import sys

@@ -7,7 +7,7 @@ LICENSE file in the root directory of this source tree.
 
 ============================================================================================================================================================================================
 
-This is the macos.mac_platform module that gets the MacOS version. 
+This is the components.mac_platform module that gets the MacOS version. 
 """
 
 import platform
