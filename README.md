@@ -1,4 +1,4 @@
-# BeeZeeBot 
+# Beebot 
 AI Desktop Configurator
 - v.0.1.0
 
